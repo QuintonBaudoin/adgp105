@@ -1,0 +1,31 @@
+<SOAP-ENV:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+<SOAP-ENV:Body>
+<a1:Player id="ref-1" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/adgp105/adgp105%2C%20Version%3D1.0.0.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull">
+<m_Attributes href="#ref-3"/>
+<m_Level>1</m_Level>
+<m_Exp>0</m_Exp>
+<m_ExpNextLVL>4096</m_ExpNextLVL>
+<m_Name id="ref-4">Steve</m_Name>
+<m_UnitStatus>ACTIVE</m_UnitStatus>
+</a1:Player>
+<a2:Hashtable id="ref-3" xmlns:a2="http://schemas.microsoft.com/clr/ns/System.Collections">
+<LoadFactor>0.72</LoadFactor>
+<Version>4</Version>
+<Comparer xsi:null="1"/>
+<HashCodeProvider xsi:null="1"/>
+<HashSize>7</HashSize>
+<Keys href="#ref-5"/>
+<Values href="#ref-6"/>
+</a2:Hashtable>
+<SOAP-ENC:Array id="ref-5" SOAP-ENC:arrayType="xsd:anyType[3]">
+<item id="ref-7" xsi:type="SOAP-ENC:string">MaxHealth</item>
+<item id="ref-8" xsi:type="SOAP-ENC:string">Speed</item>
+<item id="ref-9" xsi:type="SOAP-ENC:string">Health</item>
+</SOAP-ENC:Array>
+<SOAP-ENC:Array id="ref-6" SOAP-ENC:arrayType="xsd:anyType[3]">
+<item xsi:type="xsd:int">5</item>
+<item xsi:type="xsd:int">5</item>
+<item xsi:type="xsd:int">5</item>
+</SOAP-ENC:Array>
+</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

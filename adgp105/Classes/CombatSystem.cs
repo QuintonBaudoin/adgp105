@@ -41,9 +41,17 @@ namespace adgp105
             }
         }
         List<IUnit> m_Units;
+        public List<IUnit> Units
+        {
+            get { return m_Units; }
+        }
+
         IUnit m_CurrentUnit = null;
         ICombat m_Rules;
-        
+        public IUnit CurrentUnit
+        {
+            get { return m_CurrentUnit; }
+        }
 
         public enum States { INIT, START, MAIN, END, TERM};
 
@@ -94,9 +102,9 @@ namespace adgp105
         {
             if (m_State != States.MAIN)
                 return -1;
-
-            m_CurrentUnit.Init();
-            
+            if (m_CurrentUnit.UnitStatus == Status.ACTIVE)
+                m_CurrentUnit.Init();
+            else m_CurrentUnit.End();
 
             return 1;
         }
@@ -111,6 +119,13 @@ namespace adgp105
                 m_State = States.TERM;
                 return 3;
             }
+
+            for (int i = 0; i < m_Units.Count; i++)
+            {
+                if (m_Units[i] == null)
+                    m_Units.Remove(m_Units[i]);
+            }
+
             m_Units = m_Units.OrderBy(x => x.Speed).ToList();
             m_State = States.START;
             return 2;
@@ -154,6 +169,8 @@ namespace adgp105
             }
             return -1;
         }
+
+        
     }
 
 
