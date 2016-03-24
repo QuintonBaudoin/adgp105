@@ -57,11 +57,14 @@ namespace adgp105
             int speed = rnd.Next(1, attribpoint - 2);
             int mhealth = attribpoint - speed;
 
+            //NonPlayerCharacter npc = new NonPlayerCharacter(speed, mhealth);
 
+         //   m_Game.AddUnit(npc);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            MySerialize.Serialize(m_Player.Name, m_Player);
         }
     }
 }
