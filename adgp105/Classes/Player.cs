@@ -14,12 +14,10 @@ namespace adgp105
 
         Hashtable m_Attributes = new Hashtable();
 
-        public Player(Game game, string Name, int speed, int maxhealth)
-        {
+        public Hashtable Attributes { get { return m_Attributes; } set { m_Attributes = value; } }
 
-      
-            game.AddUnit(this);
-            
+        public Player(string Name, int speed, int maxhealth)
+        {            
             m_Attributes.Add("Health", maxhealth);
             m_Attributes.Add("MaxHealth", maxhealth);
 
@@ -36,6 +34,7 @@ namespace adgp105
         int m_Level;
         int m_Exp;
         int m_ExpNextLVL;
+        int m_ExpWorth;
 
         string m_Name;
 
@@ -74,7 +73,10 @@ namespace adgp105
             {
                 return LevelingSystem.ExpWorth(m_Level);
             }
-
+            set
+            {
+                m_ExpWorth = value;
+            }
 
         }
         public int Level
@@ -99,6 +101,11 @@ namespace adgp105
                
                return (int)m_Attributes["Speed"];
             }
+            set
+            {
+                Attributes["Speed"] = value;
+            }
+          
         }
 
         public Status UnitStatus
@@ -107,6 +114,7 @@ namespace adgp105
             {
                 return m_UnitStatus;
             }
+            set { m_UnitStatus = value; }
         }
 
         public string Name
@@ -114,6 +122,10 @@ namespace adgp105
             get
             {
                 return m_Name;
+            }
+            set
+            {
+                m_Name = value;
             }
         }
 

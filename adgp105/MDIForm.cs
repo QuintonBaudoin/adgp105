@@ -17,10 +17,15 @@ namespace adgp105
             InitializeComponent();
         }
 
+        static MDIForm _instance;
+        static public MDIForm instance { get { return _instance; } }
 
-        static public Player m_Player;
-
-        
+        static public void OpenGamePlay(Player p)
+        {
+            GamePlay newMDIChild = new GamePlay(p);
+            newMDIChild.MdiParent = MDIForm.instance;
+            newMDIChild.Show();
+        }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
@@ -32,13 +37,6 @@ namespace adgp105
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
             Load newMDIChild = new Load();
-            newMDIChild.MdiParent = this;
-            newMDIChild.Show();
-        }
-
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Save newMDIChild = new Save();
             newMDIChild.MdiParent = this;
             newMDIChild.Show();
         }

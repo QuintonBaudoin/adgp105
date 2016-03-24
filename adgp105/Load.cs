@@ -18,8 +18,6 @@ namespace adgp105
 
         }
 
-
-
         private void Notify(string arg)
         {
               //if (SOAPSerialize.Serialize("test", player) == 1)
@@ -45,11 +43,12 @@ namespace adgp105
             Controls.Clear();
             string s = "Failed to Load:  " + textBox1.Text + ". \n Check Spelling.";
             Player p;
-            SOAPSerialize.Deserialize(textBox1.Text, out p);
+            MySerialize.Deserialize(textBox1.Text, out p);
+            if (p != null) 
             s = "Load of \"" + p.Name + "\" Successful";
             Notify(s);
 
-            MDIForm.m_Player = p;
+            MDIForm.OpenGamePlay(p);
         }
     }
 }

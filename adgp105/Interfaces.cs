@@ -13,7 +13,7 @@ namespace adgp105
     public interface IUnit
     {
         
-        Status UnitStatus { get;}
+        Status UnitStatus { get; set; }
 
         bool GetAttribute(string attribute, out int value);
 
@@ -24,9 +24,9 @@ namespace adgp105
         /// 
         /// Highest speed goes first;
         /// </summary>
-        int Speed { get; }
+        int Speed { get; set; }
         
-        string Name { get; }
+        string Name { get; set; }
         /// <summary>
         /// CurrentLevel
         /// </summary>
@@ -42,7 +42,7 @@ namespace adgp105
         /// <summary>
         /// Experiance this unit is worth based on its own experiance.
         /// </summary>
-        int ExpWorth { get;}
+        int ExpWorth { get; set; }
 
 
         int ActedOn(IUnit source, IAction action);

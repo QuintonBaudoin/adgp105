@@ -3,32 +3,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Runtime.Serialization.Formatters.Soap;
+using System.Xml.Serialization;
 using System.IO;
 
 
 namespace adgp105
 {
-    public static class SOAPSerialize
+    public static class MySerialize
     {
-
+      
 
         /// <summary>
         /// File Directived for files to be stored and loaded;
         /// </summary>
         public static string m_Dir;
 
-        public static int Serialize<T>(string fileName, T t)
-        {
+        public static int Serialize<T>(string fileName, T data)
+        { XmlSerializer serial = new XmlSerializer(typeof(T));
 
             if (!Directory.Exists(m_Dir))
                 return -1;
 
             using (FileStream fs = File.Create(m_Dir + fileName + ".xml"))
             {
-                SoapFormatter serial = new SoapFormatter();
+                
 
-                serial.Serialize(fs, t);
+               
+
+                serial.Serialize(fs, data);
                 fs.Close();
 
                 return 1;
@@ -45,9 +47,9 @@ namespace adgp105
 
             using (FileStream fs = File.OpenRead(m_Dir + fileName + ".xml"))
             {
-                SoapFormatter deserial = new SoapFormatter();
+                XmlSerializer serial = new XmlSerializer(typeof(T));
 
-                data = (T)deserial.Deserialize(fs);
+                serial.Deserialize(fs);
                 fs.Close();
                 return 1;
             }

@@ -14,7 +14,7 @@ namespace adgp105
         [STAThread]
         static void Main()
         {
-            SOAPSerialize.m_Dir = @"C:\Users\quinton.baudoin\Documents\Visual Studio 2015\Projects\adgp105\adgp105\Saves\";
+            MySerialize.m_Dir = @"C:\Users\quinton.baudoin\Documents\Visual Studio 2015\Projects\adgp105\adgp105\Saves\";
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

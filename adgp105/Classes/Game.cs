@@ -11,10 +11,12 @@ namespace adgp105
     {
 
         List<IUnit> Units = new List<IUnit>();
-        bool CombatOver = false;
+        bool m_CombatOver = false;
+
+        public bool CombatOver { get { return m_CombatOver; } }
         public bool CombatCase()
         {
-            if (NumberOfNotDead() <= 1)
+            if (NumberOfNotDead() <= 1 || !PlayerAlive())
                 return false;
 
             return true;
@@ -22,7 +24,7 @@ namespace adgp105
 
         public void CombatFinished()
         {
-            CombatOver = true;   
+            m_CombatOver = true;
         }
 
         public int AddUnit(IUnit unit)
@@ -41,12 +43,34 @@ namespace adgp105
 
 
 
-            foreach(IUnit un in CombatSystem.instance.Units)
+            foreach (IUnit un in CombatSystem.instance.Units)
             {
                 if (un.UnitStatus != Status.DEAD)
                     number++;
             }
             return number;
         }
+        private bool PlayerAlive()
+        {
+            bool ret = false;
+
+            foreach (IUnit unit in Units)
+            {
+                object test = unit;
+
+
+                if (test.GetType() == typeof(Player))
+                {
+                    Player p = (Player)test;
+                    if (p.UnitStatus == Status.ACTIVE)
+                    { ret = true; break; }
+                }
+
+               
+            }
+            return ret;
+        }
     }
+
 }
+
